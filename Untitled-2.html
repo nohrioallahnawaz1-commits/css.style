@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Something Special For You 💖</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    overflow:hidden;
+    font-family:'Poppins',sans-serif;
+    background:#080312;
+    color:white;
+}
+
+/* =========================
+   BACKGROUND
+========================= */
+
+.stars{
+    position:fixed;
+    inset:0;
+    background:
+      radial-gradient(circle at 20% 20%,rgba(255,100,180,.15),transparent 25%),
+      radial-gradient(circle at 80% 70%,rgba(130,80,255,.18),transparent 30%),
+      #080312;
+}
+
+.star{
+    position:absolute;
+    width:3px;
+    height:3px;
+    background:white;
+    border-radius:50%;
+    animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+    from{opacity:.2;transform:scale(.7)}
+    to{opacity:1;transform:scale(1.5)}
+}
+
+/* =========================
+   SCREENS
+========================= */
+
+.screen{
+    position:fixed;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    padding:25px;
+    text-align:center;
+    transition:1s ease;
+}
+
+.hidden{
+    opacity:0;
+    pointer-events:none;
+    transform:scale(1.08);
+}
+
+.show{
+    opacity:1;
+    pointer-events:auto;
+    transform:scale(1);
+}
+
+/* =========================
+   INTRO
+========================= */
+
+.intro-small{
+    color:#ff9bd5;
+    font-size:15px;
+    letter-spacing:5px;
+    text-transform:uppercase;
+    margin-bottom:20px;
+    animation:fadeUp 2s ease;
+}
+
+.intro-title{
+    font-size:clamp(40px,9vw,75px);
+    line-height:1.1;
+    font-weight:600;
+    text-shadow:
+      0 0 15px #ff4fa3,
+      0 0 40px #ff198f;
+    animation:titleAppear 2s ease;
+}
+
+.intro-title span{
+    color:#ff72bc;
+}
+
+.intro-text{
+    margin-top:22px;
+    max-width:550px;
+    color:#d7cddd;
+    line-height:1.8;
+    font-size:15px;
+    animation:fadeUp 2.5s ease;
+}
+
+.start-btn{
+    margin-top:40px;
+    padding:16px 35px;
+    border:1px solid rgba(255,255,255,.3);
+    border-radius:50px;
+    background:linear-gradient(135deg,#ff3d9a,#8d4dff);
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    box-shadow:0 0 25px rgba(255,60,160,.4);
+    transition:.3s;
+}
+
+.start-btn:hover{
+    transform:translateY(-4px) scale(1.05);
+    box-shadow:0 0 45px rgba(255,60,160,.7);
+}
+
+/* =========================
+   NOTES
+========================= */
+
+.note-screen{
+    background:rgba(8,3,18,.75);
+    backdrop-filter:blur(8px);
+}
+
+.note{
+    width:min(90%,500px);
+    padding:45px 30px;
+    background:linear-gradient(145deg,
+      rgba(255,255,255,.12),
+      rgba(255,255,255,.04));
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:25px;
+    box-shadow:0 25px 80px rgba(0,0,0,.5);
+    animation:noteIn .8s ease;
+}
+
+.note-icon{
+    font-size:55px;
+    margin-bottom:20px;
+}
+
+.note h2{
+    font-family:'Caveat',cursive;
+    font-size:42px;
+    color:#ff9bd5;
+    margin-bottom:15px;
+}
+
+.note p{
+    color:#ddd3e5;
+    line-height:1.9;
+    font-size:16px;
+}
+
+.next-btn{
+    margin-top:30px;
+    padding:12px 28px;
+    border-radius:30px;
+    border:1px solid #ff75bd;
+    background:transparent;
+    color:#fff;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.next-btn:hover{
+    background:#ff4fa3;
+    box-shadow:0 0 25px #ff4fa3;
+}
+
+/* =========================
+   LETTER
+========================= */
+
+.letter-screen{
+    overflow:auto;
+    padding:30px 15px;
+}
+
+.envelope{
+    position:relative;
+    width:min(92vw,600px);
+    min-height:420px;
+    background:#fff7fc;
+    color:#3a2336;
+    border-radius:5px;
+    box-shadow:
+      0 30px 100px rgba(255,60,170,.25),
+      0 10px 40px rgba(0,0,0,.5);
+    padding:45px 35px;
+    transform:rotate(-1deg);
+    animation:letterAppear 1.5s ease;
+}
+
+.envelope:before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    height:80px;
+    background:#ffd9ed;
+    clip-path:polygon(0 0,50% 100%,100% 0);
+}
+
+.letter-content{
+    position:relative;
+    z-index:2;
+}
+
+.letter-label{
+    color:#c83c83;
+    font-size:12px;
+    letter-spacing:4px;
+    margin-bottom:30px;
+}
+
+.letter-content h1{
+    font-family:'Caveat',cursive;
+    font-size:48px;
+    color:#c83c83;
+    margin-bottom:25px;
+}
+
+.poetry{
+    font-family:'Caveat',cursive;
+    font-size:25px;
+    line-height:1.65;
+    color:#57354e;
+    margin-bottom:30px;
+}
+
+.divider{
+    width:70px;
+    height:3px;
+    background:#e96ba9;
+    margin:25px auto;
+    border-radius:5px;
+}
+
+.message{
+    font-size:15px;
+    line-height:2;
+    color:#684d62;
+}
+
+.signature{
+    margin-top:30px;
+    font-family:'Caveat',cursive;
+    font-size:28px;
+    color:#c83c83;
+}
+
+/* =========================
+   FINAL
+========================= */
+
+.final-screen{
+    background:
+      radial-gradient(circle at center,
+      #581047 0%,
+      #18051f 40%,
+      #050208 100%);
+}
+
+.final-small{
+    font-size:17px;
+    color:#ffb4dc;
+    letter-spacing:4px;
+    margin-bottom:15px;
+}
+
+.final-title{
+    font-size:clamp(48px,11vw,100px);
+    line-height:1;
+    background:linear-gradient(
+      90deg,
+      #ff77c8,
+      #fff,
+      #ff77c8,
+      #b477ff
+    );
+    background-size:300%;
+    -webkit-background-clip:text;
+    color:transparent;
+    animation:gradient 3s infinite;
+    filter:drop-shadow(0 0 25px #ff3da8);
+}
+
+.final-sub{
+    margin-top:25px;
+    font-family:'Caveat',cursive;
+    font-size:32px;
+    color:#ffe4f3;
+}
+
+.final-heart{
+    font-size:60px;
+    margin-top:25px;
+    animation:heartBeat 1s infinite;
+}
+
+@keyframes heartBeat{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.3)}
+}
+
+@keyframes gradient{
+    0%{background-position:0%}
+    50%{background-position:100%}
+    100%{background-position:0%}
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes titleAppear{
+    from{
+        opacity:0;
+        transform:scale(.6);
+        filter:blur(15px);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+        filter:blur(0);
+    }
+}
+
+@keyframes noteIn{
+    from{
+        opacity:0;
+        transform:translateY(60px) rotate(5deg);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0) rotate(0);
+    }
+}
+
+@keyframes letterAppear{
+    from{
+        opacity:0;
+        transform:scale(.5) rotate(10deg);
+    }
+    to{
+        opacity:1;
+        transform:scale(1) rotate(-1deg);
+    }
+}
+
+/* =========================
+   CONFETTI
+========================= */
+
+.confetti{
+    position:fixed;
+    top:-20px;
+    width:9px;
+    height:16px;
+    z-index:100;
+    animation:confettiFall 4s linear forwards;
+}
+
+@keyframes confettiFall{
+    to{
+        transform:
+          translateY(110vh)
+          rotate(720deg);
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+    .intro-text{
+        font-size:14px;
+    }
+
+    .note{
+        padding:35px 22px;
+    }
+
+    .note h2{
+        font-size:36px;
+    }
+
+    .envelope{
+        padding:40px 22px;
+    }
+
+    .letter-content h1{
+        font-size:40px;
+    }
+
+    .poetry{
+        font-size:22px;
+    }
+
+    .message{
+        font-size:14px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars" id="stars"></div>
+
+<!-- ================= INTRO ================= -->
+
+<section class="screen show" id="intro">
+
+    <div class="intro-small">✨ A little surprise ✨</div>
+
+    <h1 class="intro-title">
+        Something <span>Special</span><br>
+        For You...
+    </h1>
+
+    <p class="intro-text">
+        Not everything beautiful can be wrapped in a box.
+        Some surprises are made with memories,
+        a little love, and lots of feelings. 💖
+    </p>
+
+    <button class="start-btn" onclick="startNotes()">
+        Open Your Surprise 🎁
+    </button>
+
+</section>
+
+
+<!-- ================= NOTES ================= -->
+
+<section class="screen hidden note-screen" id="notes">
+
+    <div class="note" id="noteBox">
+
+        <div class="note-icon" id="noteIcon">💌</div>
+
+        <h2 id="noteTitle">Hey Sweety...</h2>
+
+        <p id="noteText">
+            There is something I have been wanting
+            to tell you today...
+        </p>
+
+        <button class="next-btn" onclick="nextNote()">
+            Continue ✨
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================= LETTER ================= -->
+
+<section class="screen hidden letter-screen" id="letter">
+
+    <div class="envelope">
+
+        <div class="letter-content">
+
+            <div class="letter-label">
+                A LETTER FOR SOMEONE SPECIAL
+            </div>
+
+            <h1>Dear Bestie, 💗</h1>
+
+            <div class="poetry">
+
+                "Kuch log zindagi mein<br>
+                sirf milte nahi...<br>
+                yaad ban jaate hain,<br>
+                aur kuch yaadein<br>
+                kabhi purani nahi hoti." ✨
+
+            </div>
+
+            <div class="divider"></div>
+
+            <p class="message">
+
+                You are one of those beautiful people
+                who make ordinary days feel a little more
+                special.
+
+                <br><br>
+
+                Thank you for all the random laughs,
+                silly conversations, unforgettable memories,
+                and for simply being YOU.
+
+                <br><br>
+
+                Life may change, people may get busy,
+                and years may pass...
+
+                <br><br>
+
+                but I hope you always remember that
+                you are deeply appreciated, genuinely
+                special, and absolutely worth celebrating.
+
+            </p>
+
+            <div class="signature">
+                With lots of love & dua 💕
+            </div>
+
+            <button class="next-btn" onclick="showFinal()">
+                One Last Surprise 🎀
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FINAL ================= -->
+
+<section class="screen hidden final-screen" id="final">
+
+    <div class="final-small">
+        TODAY IS YOUR DAY ✨
+    </div>
+
+    <h1 class="final-title">
+        HAPPY<br>
+        BIRTHDAY! 🎂
+    </h1>
+
+    <div class="final-sub">
+        Keep smiling, keep shining,<br>
+        and always stay the wonderful person you are. 💖
+    </div>
+
+    <div class="final-heart">
+        ❤️
+    </div>
+
+</section>
+
+
+<script>
+
+/* =========================
+   STARS
+========================= */
+
+for(let i=0;i<100;i++){
+
+    const star=document.createElement("div");
+
+    star.className="star";
+
+    star.style.left=Math.random()*100+"%";
+    star.style.top=Math.random()*100+"%";
+
+    star.style.animationDelay=
+        Math.random()*2+"s";
+
+    document.getElementById("stars")
+        .appendChild(star);
+}
+
+
+/* =========================
+   NOTES DATA
+========================= */
+
+const notes=[
+
+    {
+        icon:"💌",
+        title:"Hey Sweety...",
+        text:"Today isn't just another day. It's a day to celebrate the beautiful person you are."
+    },
+
+    {
+        icon:"🌸",
+        title:"A Little Reminder...",
+        text:"Never forget how special you are. Your smile, your heart and your presence make a difference."
+    },
+
+    {
+        icon:"🫶",
+        title:"Thank You...",
+        text:"Thank you for the laughs, the memories, the crazy moments and all those little things that became unforgettable."
+    },
+
+    {
+        icon:"✨",
+        title:"One More Thing...",
+        text:"No matter where life takes you, I hope you always find reasons to smile and people who value your beautiful heart."
+    }
+
+];
+
+let currentNote=0;
+
+
+/* =========================
+   START
+========================= */
+
+function startNotes(){
+
+    document.getElementById("intro")
+        .classList.remove("show");
+
+    document.getElementById("intro")
+        .classList.add("hidden");
+
+    setTimeout(()=>{
+
+        document.getElementById("notes")
+            .classList.remove("hidden");
+
+        document.getElementById("notes")
+            .classList.add("show");
+
+    },700);
+}
+
+
+/* =========================
+   NEXT NOTE
+========================= */
+
+function nextNote(){
+
+    currentNote++;
+
+    if(currentNote >= notes.length){
+
+        document.getElementById("notes")
+            .classList.remove("show");
+
+        document.getElementById("notes")
+            .classList.add("hidden");
+
+        setTimeout(()=>{
+
+            document.getElementById("letter")
+                .classList.remove("hidden");
+
+            document.getElementById("letter")
+                .classList.add("show");
+
+        },700);
+
+        return;
+    }
+
+    const box=document.getElementById("noteBox");
+
+    box.style.animation="none";
+
+    setTimeout(()=>{
+
+        document.getElementById("noteIcon").innerText=
+            notes[currentNote].icon;
+
+        document.getElementById("noteTitle").innerText=
+            notes[currentNote].title;
+
+        document.getElementById("noteText").innerText=
+            notes[currentNote].text;
+
+        box.style.animation="noteIn .8s ease";
+
+    },100);
+}
+
+
+/* =========================
+   FINAL SCREEN
+========================= */
+
+function showFinal(){
+
+    document.getElementById("letter")
+        .classList.remove("show");
+
+    document.getElementById("letter")
+        .classList.add("hidden");
+
+    setTimeout(()=>{
+
+        document.getElementById("final")
+            .classList.remove("hidden");
+
+        document.getElementById("final")
+            .classList.add("show");
+
+        createConfetti();
+
+    },800);
+}
+
+
+/* =========================
+   CONFETTI
+========================= */
+
+function createConfetti(){
+
+    const colors=[
+        "#ff4fa3",
+        "#ffd166",
+        "#9b5cff",
+        "#4cc9f0",
+        "#ffffff",
+        "#ff7eb3"
+    ];
+
+    for(let i=0;i<150;i++){
+
+        const piece=document.createElement("div");
+
+        piece.className="confetti";
+
+        piece.style.left=Math.random()*100+"vw";
+
+        piece.style.background=
+            colors[Math.floor(Math.random()*colors.length)];
+
+        piece.style.animationDuration=
+            (Math.random()*3+2)+"s";
+
+        piece.style.animationDelay=
+            Math.random()*2+"s";
+
+        piece.style.transform=
+            `rotate(${Math.random()*360}deg)`;
+
+        document.body.appendChild(piece);
+
+        setTimeout(()=>{
+            piece.remove();
+        },6000);
+    }
+}
+
+</script>
+
+</body>
+</html>
+
